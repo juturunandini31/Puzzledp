@@ -6,6 +6,7 @@
   <title>Puzzle Diplomates | Real Estate Marketing – Dubai</title>
   <meta name="description" content="Performance-first real estate marketing services in Dubai. Lead generation, SEO, PPC, social, and website conversion for property brands.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <style>
     :root {
       --brand:#0f3d52;
@@ -15,23 +16,44 @@
       --muted:#6c757d;
       --light:#f6f9fc;
     }
-    body { color: var(--text); }
-    .navbar { box-shadow: 0 2px 14px rgba(15,61,82,.06); }
-    .navbar.navbar-dark { background: var(--text); }
+    body { color: var(--text); font-family: "Sofia Pro", "Sofia Sans", "Inter", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    /* Attractive, light glassy navbar */
+    .navbar { background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,249,251,.92)); backdrop-filter: saturate(140%) blur(6px); border-bottom: 1px solid #e6eef3; box-shadow: 0 6px 24px rgba(15,61,82,.06); }
+    .navbar.navbar-dark { background: transparent; }
     .navbar.navbar-dark .navbar-brand img { filter: none; }
-    .navbar.navbar-dark .nav-link { color: #e9f7fa; font-weight: 600; }
-    .navbar.navbar-dark .nav-link:hover, .navbar.navbar-dark .nav-link.active { color:#ffffff; }
-    .btn-cta { background:#ffffff; color: var(--brand); border: 0; border-radius: 999px; padding: .5rem 1rem; font-weight:600; }
-    .btn-cta:hover { background:#f2f5f7; color: var(--brand); }
+    .navbar.navbar-dark .nav-link { color: #000000; font-weight: 600; }
+    .navbar.navbar-dark .nav-link:hover, .navbar.navbar-dark .nav-link.active { color:#000000; opacity:.8; }
+    .btn-cta { background:#000000; color: #ffffff; border: 0; border-radius: 999px; padding: .5rem 1rem; font-weight:600; }
+    .btn-cta:hover { background:#111111; color: #ffffff; }
     .btn-brand { background: var(--brand-2); color:#fff; border:none; }
     .btn-brand:hover { background:#078d9c; color:#fff; }
     .text-brand { color: var(--brand); }
     .bg-brand { background: var(--brand); }
     .badge-soft { background: rgba(10,165,181,.12); color: var(--brand-2); }
     .hero {
-      background: linear-gradient(135deg, rgba(10,165,181,.08), rgba(15,61,82,.08));
+      position: relative;
+      background:
+        linear-gradient(115deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.25) 100%),
+        url('https://images.unsplash.com/photo-1518085250887-2f903c200fee?q=80&w=2000&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
       position: relative;
       overflow: hidden;
+      color: #ffffff;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero .shape { display:none; }
+    .hero-title { font-weight: 800; line-height: 1.1; font-size: clamp(2rem, 4vw + 1rem, 4rem); letter-spacing: -0.5px; }
+    .hero-sub { color: rgba(255,255,255,.8); max-width: 46rem; }
+    .highlight {
+      display:inline-block; padding:.15em .4em; border-radius:.6rem; color:#dffbff;
+      background: linear-gradient(135deg, rgba(66,133,244,.2), rgba(72,238,214,.2));
+      border:1px solid rgba(72,238,214,.65); box-shadow: inset 0 0 0 1px rgba(66,133,244,.25);
     }
     .hero .shape { position:absolute; inset:auto -10% -30% auto; width:50%; height:120%; background: radial-gradient(60% 60% at 50% 50%, rgba(10,165,181,.25), rgba(10,165,181,0)); filter: blur(40px); }
     .feature-icon { width:3rem; height:3rem; display:grid; place-items:center; border-radius:.75rem; background: rgba(10,165,181,.1); color: var(--brand-2); }
@@ -43,6 +65,21 @@
     .footer { background:#0b2b39; color:#cfe7ee; }
     .footer a { color:#e9f7fa; text-decoration:none; }
     .footer a:hover { text-decoration:underline; }
+
+    /* About section styling */
+    .about-title { font-weight: 700; line-height: 1.08; font-size: clamp(2rem, 3.6vw + 1rem, 3.8rem); letter-spacing: -.3px; }
+    .about-title em { font-style: italic; font-weight: 600; }
+
+    /* About as image block like hero */
+    .about-hero { position: relative; border-radius: 1rem; overflow: hidden; 
+      background:
+        linear-gradient(115deg, rgba(0,0,0,.70) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.25) 100%),
+        url('https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=2000&auto=format&fit=crop');
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      min-height: 56vh; display: flex; align-items: flex-start; }
+    .about-hero-content { position: relative; z-index: 1; color: #fff; padding: clamp(1.5rem, 3vw, 3rem); max-width: 62rem; }
+    .about-hero .about-title { color:#fff; margin-bottom: .75rem; }
+    .about-hero p { color: rgba(255,255,255,.9); margin: 0; }
 
     /* Animations */
     html { scroll-behavior: smooth; }
@@ -65,15 +102,15 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="/">
-        <img src="assets/logo.png" alt="Puzzle Diplomates" class="brand-logo" />
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="Logo.png" alt="Puzzle Diplomates" class="brand-logo" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
         </ul>
@@ -84,74 +121,37 @@
 
   <!-- Hero -->
   <header class="hero section reveal" data-anim="zoom">
-    <div class="shape"></div>
     <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6 reveal" data-delay="1">
-          <span class="badge rounded-pill badge-soft mb-3">Dubai • Real Estate Growth</span>
-          <h1 class="display-5 fw-bold lh-tight">Performance Marketing for Real Estate Brands in Dubai</h1>
-          <p class="lead text-secondary mt-3">We build predictable lead engines using SEO, PPC, social, and high‑converting landing pages. Built for property developers, brokers, and communities.</p>
+      <div class="row">
+        <div class="col-12">
+          <h1 class="hero-title mb-3">
+            Helping Businesses Turn<br>
+            Media Into <span class="highlight">Revenue</span>
+          </h1>
+          <p class="hero-sub mt-2">We turn your media investments into measurable growth through full‑funnel performance strategy and execution.</p>
           <div class="d-flex gap-3 mt-4">
             <a href="#contact" class="btn btn-brand btn-lg">Request a Free Audit</a>
-            <a href="#services" class="btn btn-outline-secondary btn-lg">Explore Services</a>
-          </div>
-          <div class="d-flex flex-wrap gap-4 mt-4 text-secondary">
-            <div><span class="stat text-brand">3.2x</span><br><small>Avg. ROAS</small></div>
-            <div><span class="stat text-brand">+180%</span><br><small>Qualified Leads</small></div>
-            <div><span class="stat text-brand">< 30d</span><br><small>Time to Value</small></div>
-          </div>
-        </div>
-        <div class="col-lg-6 reveal" data-anim="right" data-delay="2">
-          <div class="p-3 p-md-4 bg-white rounded-4 shadow-sm">
-            <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1600&auto=format&fit=crop" class="w-100 h-100 object-fit-cover" alt="Dubai skyline and real estate" />
-            </div>
+            <a href="#services" class="btn btn-outline-light btn-lg">Explore Services</a>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Trust / Logos (placeholder) -->
-  <section class="section py-4 reveal">
-    <div class="container text-center">
-      <small class="text-uppercase text-secondary">Trusted by property brands</small>
-      <div class="row row-cols-2 row-cols-md-5 g-4 align-items-center mt-2">
-        <div class="col"><div class="text-secondary">Emaar</div></div>
-        <div class="col"><div class="text-secondary">Nakheel</div></div>
-        <div class="col"><div class="text-secondary">DAMAC</div></div>
-        <div class="col"><div class="text-secondary">Meraas</div></div>
-        <div class="col"><div class="text-secondary">Aldar</div></div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- About -->
   <section id="about" class="section reveal">
     <div class="container">
       <div class="row align-items-center g-4">
-        <div class="col-lg-6 order-lg-2 reveal" data-anim="right" data-delay="1">
-          <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1600&auto=format&fit=crop" alt="About Puzzle Diplomates">
-          </div>
+        <div class="col-lg-6">
+          <h3 class="fw-bold">About Us</h3>
+          <h2 class="about-title mb-3">Combining <em>visionary development</em> with a best‑in‑class real estate marketing agency.</h2>
+          <p class="text-secondary">We partner with leading property brands to shape demand across channels and convert it into measurable growth. Our team aligns media, creative, and landing experiences into a single performance system.</p>
         </div>
-        <div class="col-lg-6 reveal" data-delay="2">
-          <span class="badge rounded-pill badge-soft mb-3">About Us</span>
-          <h2 class="fw-bold">Performance team for property brands</h2>
-          <p class="text-secondary">We partner with developers and brokerages in Dubai to build predictable lead engines. Our focus is full‑funnel alignment: traffic, page experience, and tracking.</p>
-          <div class="row g-3">
-            <div class="col-6 reveal" data-delay="1">
-              <div class="p-3 bg-light rounded-3 text-center">
-                <div class="stat text-brand">3.2x</div>
-                <div class="small text-secondary">Avg. ROAS</div>
-              </div>
-            </div>
-            <div class="col-6 reveal" data-delay="2">
-              <div class="p-3 bg-light rounded-3 text-center">
-                <div class="stat text-brand">48%</div>
-                <div class="small text-secondary">Lower CPL</div>
-              </div>
-            </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+            <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1600&auto=format&fit=crop" alt="Collaborative puzzle strategy">
           </div>
         </div>
       </div>
@@ -376,7 +376,7 @@
       <div class="row g-4">
         <div class="col-md-6 col-lg-4 reveal" data-delay="1">
           <div class="card h-100 card-hover overflow-hidden">
-            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1200&auto=format&fit=crop" alt="Luxury towers"></div>
+            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Analytics dashboard and planning"></div>
             <div class="card-body">
               <span class="badge rounded-pill badge-soft mb-2">Launch</span>
               <h6 class="mb-1">Luxury Towers – Marina</h6>
@@ -386,7 +386,7 @@
         </div>
         <div class="col-md-6 col-lg-4 reveal" data-delay="2">
           <div class="card h-100 card-hover overflow-hidden">
-            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="Community villas"></div>
+            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1520974759811-2bfe27f3a43a?q=80&w=1200&auto=format&fit=crop" alt="Creative team collaboration"></div>
             <div class="card-body">
               <span class="badge rounded-pill badge-soft mb-2">Always‑on</span>
               <h6 class="mb-1">Family Villas – Town Square</h6>
@@ -396,7 +396,7 @@
         </div>
         <div class="col-md-6 col-lg-4 reveal" data-delay="3">
           <div class="card h-100 card-hover overflow-hidden">
-            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1200&auto=format&fit=crop" alt="Waterfront living"></div>
+            <div class="ratio ratio-4x3"><img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="Abstract gradient growth"></div>
             <div class="card-body">
               <span class="badge rounded-pill badge-soft mb-2">SEO</span>
               <h6 class="mb-1">Waterfront Living – Creek</h6>
@@ -471,7 +471,7 @@
         <div class="col-md-6 col-lg-4">
           <h6 class="fw-bold">Company</h6>
           <ul class="list-unstyled small">
-            <li><a href="/">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Work With Us</a></li>
