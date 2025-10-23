@@ -15,6 +15,19 @@
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 .75rem 2rem rgba(0,0,0,.08); }
     .brand-logo { height: 32px; width: auto; display:block; }
     @media (min-width: 992px) { .brand-logo { height: 36px; } }
+
+    .clients { position: relative; padding: 3rem 0; background: #f8f9ff; }
+    .clients::before { content: ""; position:absolute; inset:0; background:
+      repeating-linear-gradient(0deg, rgba(111,125,251,.14) 0 1px, rgba(111,125,251,0) 1px 120px),
+      repeating-linear-gradient(90deg, rgba(111,125,251,.14) 0 1px, rgba(111,125,251,0) 1px 160px);
+      pointer-events:none; }
+    .clients .section-title { font-weight: 800; }
+    .client-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; position: relative; }
+    .client-card { background:#ffffff; border:1px solid rgba(22,31,43,.08); border-radius: 14px; height: 92px; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+    .client-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.10); }
+    .client-img { max-height: 54px; max-width: 140px; width: auto; height: auto; filter: saturate(.95) contrast(.98); }
+    @media (max-width: 991.98px) { .client-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 575.98px) { .client-grid { grid-template-columns: repeat(2, 1fr); } .client-card{ height:80px; } .client-img{ max-height:46px; max-width:120px; } }
   </style>
 </head>
 <body>
@@ -35,6 +48,37 @@
       </div>
     </div>
   </nav>
+
+  <section class="clients">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <h3 class="section-title mb-0">Our Clients</h3>
+        <small class="text-muted">Trusted by leading real estate brands</small>
+      </div>
+      <div class="client-grid">
+        <div class="client-card"><img class="client-img" src="../logofive.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logofour.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logonine.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logoone.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logosix.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logoten.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logothree.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logotwo.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../golden.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../Logo.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logoeleven.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logofourteen.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logofifteen.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logosixteen.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logoseven.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../logothirteen.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../world.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../worldone.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../worldthree.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="../worldfour.png" alt="Client"></div>
+      </div>
+    </div>
+  </section>
 
   <header class="section bg-light">
     <div class="container">

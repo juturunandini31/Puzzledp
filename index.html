@@ -12,52 +12,128 @@
       --brand:#0f3d52;
       --brand-2:#0aa5b5;
       --accent:#ffc107;
-      --text:#1b1f23;
+      --text:#161f2b;
       --muted:#6c757d;
       --light:#f6f9fc;
     }
-    body { color: var(--text); font-family: "Sofia Pro", "Sofia Sans", "Inter", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    /* Attractive, light glassy navbar */
-    .navbar { background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,249,251,.92)); backdrop-filter: saturate(140%) blur(6px); border-bottom: 1px solid #e6eef3; box-shadow: 0 6px 24px rgba(15,61,82,.06); }
-    .navbar.navbar-dark { background: transparent; }
+    /* Sofia Pro webfont: replace URLs with your licensed font files if available */
+    @font-face {
+      font-family: "Sofia Pro";
+      src: local("Sofia Pro"),
+           url("assets/fonts/sofia-pro-regular.woff2") format("woff2"),
+           url("assets/fonts/sofia-pro-regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Sofia Pro";
+      src: local("Sofia Pro Semibold"), local("Sofia Pro SemiBold"),
+           url("assets/fonts/sofia-pro-semibold.woff2") format("woff2"),
+           url("assets/fonts/sofia-pro-semibold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Sofia Pro";
+      src: local("Sofia Pro Bold"),
+           url("assets/fonts/sofia-pro-bold.woff2") format("woff2"),
+           url("assets/fonts/sofia-pro-bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    body {
+      color: #e9f7fa;
+      font-family: 'Inter', 'Montserrat', 'Poppins', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background:
+        radial-gradient(1200px 700px at 22% 28%, rgba(111, 125, 251, .24), rgba(0,0,0,0)),
+        radial-gradient(900px 600px at 84% 44%, rgba(72, 238, 214, .22), rgba(0,0,0,0)),
+        linear-gradient(180deg, #0a0f14 0%, #0e1620 55%, #0b1118 100%);
+      background-attachment: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    /* Default muted text on dark */
+    .text-secondary { color: rgba(233,247,250,.78) !important; }
+    /* Solid white navbar */
+    .navbar { background:#ffffff; border-bottom: 1px solid #e6eef3; box-shadow: 0 6px 24px rgba(15,61,82,.06); }
+    .navbar.navbar-dark { background:#ffffff; }
     .navbar.navbar-dark .navbar-brand img { filter: none; }
-    .navbar.navbar-dark .nav-link { color: #000000; font-weight: 600; }
-    .navbar.navbar-dark .nav-link:hover, .navbar.navbar-dark .nav-link.active { color:#000000; opacity:.8; }
+    .navbar.navbar-dark .nav-link { color: #000000; font-weight: 600; padding: .75rem 1rem; position: relative; }
+    .navbar.navbar-dark .nav-link:hover, .navbar.navbar-dark .nav-link.active { color:#000000; opacity:1; }
+    .navbar.navbar-dark .nav-link::after { content:""; position:absolute; left:1rem; right:1rem; bottom:.35rem; height:2px; background:#111; opacity:0; transform: translateY(2px); transition: all .2s ease; border-radius:2px; }
+    .navbar.navbar-dark .nav-link:hover::after, .navbar.navbar-dark .nav-link.active::after { opacity:.9; transform:none; }
     .btn-cta { background:#000000; color: #ffffff; border: 0; border-radius: 999px; padding: .5rem 1rem; font-weight:600; }
     .btn-cta:hover { background:#111111; color: #ffffff; }
     .btn-brand { background: var(--brand-2); color:#fff; border:none; }
     .btn-brand:hover { background:#078d9c; color:#fff; }
+    /* Hero white pill CTA like reference */
+    .btn-hero { background:#ffffff; color:#0d0f12; border:0; border-radius:999px; padding:.9rem 1.3rem; font-weight:700; box-shadow: 0 6px 16px rgba(0,0,0,.22); }
+    .btn-hero:hover { background:#f2f4f7; color:#0d0f12; box-shadow: 0 8px 20px rgba(0,0,0,.26); }
     .text-brand { color: var(--brand); }
     .bg-brand { background: var(--brand); }
     .badge-soft { background: rgba(10,165,181,.12); color: var(--brand-2); }
     .hero {
       position: relative;
       background:
-        linear-gradient(115deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.25) 100%),
-        url('https://images.unsplash.com/photo-1518085250887-2f903c200fee?q=80&w=2000&auto=format&fit=crop');
+        radial-gradient(1200px 700px at 22% 28%, rgba(111, 125, 251, .24), rgba(0,0,0,0)),
+        radial-gradient(900px 600px at 84% 44%, rgba(72, 238, 214, .22), rgba(0,0,0,0)),
+        linear-gradient(180deg, #0a0f14 0%, #0e1620 55%, #0b1118 100%);
       background-size: cover;
-      background-position: center right;
+      background-position: center;
       background-repeat: no-repeat;
       position: relative;
       overflow: hidden;
       color: #ffffff;
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-      min-height: 70vh;
+      padding-top: 2.25rem;
+      padding-bottom: 2.25rem;
+      min-height: 70svh;
+      max-height: 48rem;
+      border-bottom-left-radius: 1.25rem;
+      border-bottom-right-radius: 1.25rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
     }
+    .hero .container { position: static; height: auto; }
+    .hero-cta { position: absolute; right: 3rem; bottom: 2rem; text-align: left; max-width: 34rem; }
+    @media (max-width: 992px) { .hero-cta { right: 1.25rem; bottom: .75rem; max-width: 28rem; } }
+    @media (max-width: 576px) { .hero-cta { right: 1rem; left: 1rem; bottom: .75rem; max-width: none; } }
+    @media (min-width: 992px) {
+      .hero { min-height: 760px; }
+    }
+    /* Subtle vignette/noise overlay */
+    .hero::after { content:""; position:absolute; inset:0; pointer-events:none; 
+      background: radial-gradient(120% 120% at 50% 30%, rgba(255,255,255,0) 0%, rgba(0,0,0,.08) 60%, rgba(0,0,0,.18) 100%);
+      mix-blend-mode: normal; }
     .hero .shape { display:none; }
-    .hero-title { font-weight: 800; line-height: 1.1; font-size: clamp(2rem, 4vw + 1rem, 4rem); letter-spacing: -0.5px; }
-    .hero-sub { color: rgba(255,255,255,.8); max-width: 46rem; }
+    .hero-title { font-weight: 800; line-height: 1.03; font-size: clamp(2.4rem, 5.2vw + 1rem, 3.9rem); letter-spacing: -0.2px; text-shadow: 0 1px 12px rgba(0,0,0,.25); }
+    .hero-sub { color: rgba(255,255,255,.72); max-width: 44rem; font-size: 1.05rem; }
     .highlight {
-      display:inline-block; padding:.15em .4em; border-radius:.6rem; color:#dffbff;
-      background: linear-gradient(135deg, rgba(66,133,244,.2), rgba(72,238,214,.2));
-      border:1px solid rgba(72,238,214,.65); box-shadow: inset 0 0 0 1px rgba(66,133,244,.25);
+      display:inline-block; padding:.12em .6em; border-radius:.62rem; color:#e8fbff;
+      background: linear-gradient(135deg, rgba(111,125,251,.26), rgba(72,238,214,.22));
+      border:1.5px solid rgba(72,238,214,.72); box-shadow: inset 0 0 0 1px rgba(111,125,251,.3);
     }
+    /* Typing caret */
+    .type-caret { position: relative; }
+    .type-caret::after { content: ""; display:inline-block; width:2px; height:1.05em; background:#e8fbff; margin-left:6px; animation: blink 1s steps(1) infinite; vertical-align: -0.18em; opacity:.9; }
+    @keyframes blink { 50% { opacity: 0; } }
+    /* Word rotate animation */
+    .rotate-enter { opacity: 0; transform: translateY(8px); transition: all .35s ease; }
+    .rotate-enter.rotate-enter-active { opacity: 1; transform: translateY(0); }
+    .rotate-exit { opacity: 1; transform: translateY(0); transition: all .25s ease; }
+    .rotate-exit.rotate-exit-active { opacity: 0; transform: translateY(-6px); }
     .hero .shape { position:absolute; inset:auto -10% -30% auto; width:50%; height:120%; background: radial-gradient(60% 60% at 50% 50%, rgba(10,165,181,.25), rgba(10,165,181,0)); filter: blur(40px); }
     .feature-icon { width:3rem; height:3rem; display:grid; place-items:center; border-radius:.75rem; background: rgba(10,165,181,.1); color: var(--brand-2); }
     .section { padding: 4rem 0; }
+    /* Partner avatars (hero) */
+    .small-muted { color: rgba(255,255,255,.7); font-size:.95rem; }
+    .avatar-group { display:flex; align-items:center; gap:.5rem; }
+    .avatar { width:34px; height:34px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,.85); box-shadow:0 1px 2px rgba(0,0,0,.2); }
+    .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
     .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 0.75rem 2rem rgba(0,0,0,.08); }
     .stat { font-weight:700; font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem); }
@@ -66,8 +142,146 @@
     .footer a { color:#e9f7fa; text-decoration:none; }
     .footer a:hover { text-decoration:underline; }
 
+    /* Banner Heading (home page) */
+    .banner-heading {
+      font-family: 'Inter', 'Montserrat', 'Poppins', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #ffffff;
+      text-align: left;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .banner-heading { font-size: 32px; }
+    }
+
+    /* Accent buttons with animation */
+    .btn-accent {
+      background: linear-gradient(135deg, #6f7dfb, #48eed6);
+      color: #0b0f14; border: 0; border-radius: 999px;
+      padding: .7rem 1.2rem; font-weight: 700;
+      box-shadow: 0 6px 18px rgba(79, 160, 240, .35);
+      position: relative; overflow: hidden;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(79,160,240,.45); color:#0b0f14; }
+    .btn-accent::after { content:""; position:absolute; inset:-2px; border-radius:999px;
+      background: radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.35), rgba(255,255,255,0)); opacity:.0; transition: opacity .2s ease; }
+    .btn-accent:hover::after { opacity:.5; }
+    @keyframes pulseGlow { 0%,100%{ filter: drop-shadow(0 0 0 rgba(79,160,240,.0)); } 50%{ filter: drop-shadow(0 0 8px rgba(79,160,240,.35)); } }
+    .btn-accent { animation: pulseGlow 3s ease-in-out infinite; }
+
+    /* Services: attractive animated cards */
+    .service-card { position: relative; height: 100%; border: 1px solid rgba(22,31,43,.10); border-radius: 1rem; background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%); box-shadow: 0 6px 20px rgba(0,0,0,.05), inset 0 1px 0 rgba(255,255,255,.8); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; overflow: hidden; }
+    /* Ensure dark-on-light text inside white cards */
+    .service-card, .service-card p, .service-card h1, .service-card h2, .service-card h3, .service-card h4, .service-card h5, .service-card h6 { color: var(--text); }
+    .glass-card, .glass-card p, .glass-card h1, .glass-card h2, .glass-card h3, .glass-card h4, .glass-card h5, .glass-card h6 { color: var(--text); }
+    .sheet, .sheet p, .sheet h1, .sheet h2, .sheet h3, .sheet h4, .sheet h5, .sheet h6 { color: var(--text); }
+    .stack-card, .stack-card p, .stack-card h1, .stack-card h2, .stack-card h3, .stack-card h4, .stack-card h5, .stack-card h6 { color: var(--text); }
+    .client-card { color: var(--text); }
+    .service-card .text-secondary, .glass-card .text-secondary, .sheet .text-secondary, .stack-card .text-secondary { color: #6b7682 !important; }
+    .service-card::before { content:""; position:absolute; inset:-30% -20% 40% -20%; background: radial-gradient(60% 60% at 20% 0%, rgba(111,125,251,.14), rgba(72,238,214,.08) 60%, rgba(255,255,255,0) 100%); pointer-events:none; }
+    .service-card::after { content:""; position:absolute; top:0; bottom:0; left:-30%; width:30%; transform:skewX(-20deg) translateX(-120%); background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.4), rgba(255,255,255,0)); transition: transform .6s ease; }
+    .service-card:hover { transform: translateY(-6px) rotateX(.6deg) rotateY(-.6deg); box-shadow: 0 18px 46px rgba(0,0,0,.14); border-color: rgba(10,165,181,.22); }
+    .service-card:hover::after { transform:skewX(-20deg) translateX(380%); }
+    .service-icon { width: 3rem; height: 3rem; display:grid; place-items:center; border-radius:.75rem; color:#0aa5b5; background: linear-gradient(135deg, rgba(111,125,251,.18), rgba(72,238,214,.18)); border: 1px solid rgba(72,238,214,.5); box-shadow: inset 0 0 0 1px rgba(111,125,251,.18); }
+    .service-icon { position: relative; overflow:hidden; }
+    .service-icon::after { content:""; position:absolute; inset:0; border-radius:.75rem; background: radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.45), rgba(255,255,255,0)); opacity:0; transform: scale(.6); transition: opacity .35s ease, transform .35s ease; }
+    .service-card:hover .service-icon::after { opacity:.75; transform: scale(1.05); }
+    .service-card .list { margin:0; padding-left: 1.15rem; }
+    .service-card .list li { margin:.35rem 0; color:#6b7682; }
+    .tilt { transform: translateY(10px) scale(.98); opacity:0; transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .6s ease; }
+    .reveal.in-view .tilt { transform: translateY(0) scale(1); opacity:1; }
+    @keyframes floatIcon { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+    .service-card:hover .service-icon { animation: floatIcon 1.2s ease-in-out infinite alternate; }
+    @keyframes bump { 0%{ transform: translateY(0); } 40%{ transform: translateY(-2px); } 100%{ transform: translateY(0); } }
+    .service-card:hover .btn-accent { animation: bump .35s ease-out; }
+
+    /* Reusable attractive container */
+    .glass-card { position: relative; background:#ffffff; border:1px solid rgba(22,31,43,.08); border-radius: 1rem; box-shadow: 0 6px 24px rgba(0,0,0,.06); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; overflow:hidden; }
+    .glass-card::before { content:""; position:absolute; inset:-35% -20% 55% -20%; background: radial-gradient(70% 70% at 10% 0%, rgba(111,125,251,.12), rgba(72,238,214,.08) 60%, rgba(255,255,255,0) 100%); pointer-events:none; }
+    .glass-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,.12); border-color: rgba(10,165,181,.22); }
+
+    /* Light backgrounds + animations for Counter */
+    .counter-wrap { background: linear-gradient(180deg, #f8fafc, #f4f8fb); border:1px solid rgba(22,31,43,.06); border-radius: 1rem; padding: 2rem; box-shadow: 0 6px 24px rgba(0,0,0,.04); }
+    .stat-card { background:#ffffff; border:1px solid rgba(22,31,43,.08); border-radius: .875rem; padding: 1.25rem; box-shadow: 0 6px 18px rgba(0,0,0,.05); transition: transform .25s ease, box-shadow .25s ease; }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.08); }
+    .stat { font-size: clamp(1.8rem, 3.2vw + .5rem, 2.4rem); font-weight: 800; }
+    @keyframes numPop { 0%{ transform: scale(.96); opacity:.6;} 60%{ transform: scale(1.04); opacity:1;} 100%{ transform: scale(1);} }
+    .reveal.in-view .stat { animation: numPop .6s ease both; }
+    /* Use the dark site background everywhere (except navbar) */
+    .bg-light { background: transparent !important; }
+    /* Headings on dark background default to white for non-card areas */
+    .section > .container > h2, .section .section-title { color: #ffffff; }
+
+    /* Why This Matters: simplified stacked card like screenshot */
+    .why { position: relative; background: transparent; border-radius: 1rem; overflow:hidden; }
+    .why-blob { position:absolute; left:-8%; top: 8%; width: 520px; height: 520px; pointer-events:none; filter: blur(6px); opacity:.45;
+      background:
+        radial-gradient(50% 50% at 50% 50%, rgba(111,125,251,.20), rgba(111,125,251,0) 70%),
+        radial-gradient(60% 60% at 60% 40%, rgba(72,238,214,.18), rgba(72,238,214,0) 70%);
+      border-radius: 48% 52% 56% 44% / 48% 44% 56% 52%;
+      transform: rotate(12deg);
+    }
+    .why .container, .why .row { overflow: visible; }
+    .why h2 { color:#ffffff; }
+    .why p { color: rgba(255,255,255,.85); }
+    .sheet-stack { position: relative; height: 360px; }
+    .sheet { position:absolute; left:6%; right:0; max-width: 560px; background:#fff; border-radius: 20px; padding: 28px 32px; box-shadow: 0 18px 40px rgba(0,0,0,.08); border: 1px solid rgba(22,31,43,.06); transform-origin: 50% 80%; transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
+    .sheet.layer-3 { top: 220px; transform: rotate(-2.2deg); opacity:.55; z-index:1; }
+    .sheet.layer-2 { top: 110px; transform: rotate(1.2deg); opacity:.75; z-index:2; }
+    .sheet.layer-1 { top: 0; transform: rotate(-0.6deg); opacity:1; z-index:3; }
+    .sheet.active { box-shadow: 0 26px 60px rgba(0,0,0,.14); transform: rotate(0deg) translateY(-2px); }
+    .sheet .icon { width: 42px; height:42px; border-radius: 12px; display:grid; place-items:center; color:#0aa5b5; background: linear-gradient(135deg, rgba(111,125,251,.16), rgba(72,238,214,.16)); border: 1px solid rgba(72,238,214,.45); margin-bottom:.5rem; }
+    .sheet-dots { position:absolute; top:-26px; right:-6px; display:flex; gap:6px; }
+    .sheet-dots .dot { width:8px; height:8px; border-radius:999px; background:#c9d6df; transition: transform .2s ease, background .2s ease; }
+    .sheet-dots .dot.active { background:#0aa5b5; transform: scale(1.35); }
+    @media (max-width: 991.98px) { .sheet-stack { height:auto; } .sheet { position:relative; left:0; right:0; top:0 !important; transform:none; margin-bottom:1rem; } .sheet.layer-2,.sheet.layer-3{ display:none; } }
+
+    /* Engine section (dark, alternating cards with line) */
+    .engine { background: #0e1620; color: #dbe7ee; border-radius: 1rem; }
+    .engine .container { position: relative; }
+    .engine h2 { color: #ffffff; }
+    .engine-line { position:absolute; top: 110px; bottom: 40px; left: 50%; width: 3px; transform: translateX(-50%); background: linear-gradient(180deg, rgba(111,125,251,.0), rgba(72,238,214,.9), rgba(111,125,251,.0)); border-radius: 2px; opacity:.8; }
+    .engine-card { background: radial-gradient(120% 120% at 10% 10%, rgba(111,125,251,.12), rgba(72,238,214,.08) 60%, rgba(255,255,255,0) 100%), rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); color:#e9f7fa; border-radius: 20px; padding: 28px 28px; box-shadow: 0 12px 30px rgba(0,0,0,.25) inset, 0 10px 32px rgba(0,0,0,.25); backdrop-filter: blur(2px); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .engine-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(0,0,0,.28), 0 0 0 1px rgba(72,238,214,.12) inset; border-color: rgba(72,238,214,.18); }
+    .engine-card h5 { color:#ffffff; }
+    .engine-card p { color: #b8c9d3; }
+    .engine-num { font-size: 54px; font-weight: 800; line-height: 1; background: linear-gradient(180deg, #ffffff, rgba(255,255,255,.35)); -webkit-background-clip: text; background-clip: text; color: transparent; opacity:.9; margin-bottom:.35rem; }
+    @media (max-width: 991.98px) { .engine-line { display:none; } .engine { border-radius: 0.75rem; } }
+
+    /* Clients grid */
+    .clients { position: relative; padding: 3rem 0; }
+    .clients::before { content: ""; position:absolute; inset:0; background:
+      repeating-linear-gradient(0deg, rgba(111,125,251,.14) 0 1px, rgba(111,125,251,0) 1px 120px),
+      repeating-linear-gradient(90deg, rgba(111,125,251,.14) 0 1px, rgba(111,125,251,0) 1px 160px);
+      pointer-events:none; }
+    .clients .section-title { font-weight: 800; color:#ffffff; }
+    .client-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap: 18px; position: relative; }
+    .client-card { background:#ffffff; border:1px solid rgba(22,31,43,.08); border-radius: 14px; height: 92px; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(0,0,0,.10); transition: transform .2s ease, box-shadow .2s ease; }
+    .client-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.16); }
+    .client-img { max-height: 54px; max-width: 140px; width: auto; height: auto; filter: saturate(.95) contrast(.98); }
+    @media (max-width: 991.98px) { .client-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 575.98px) { .client-grid { grid-template-columns: repeat(2, 1fr); } .client-card{ height:80px; } .client-img{ max-height:46px; max-width:120px; } }
+
+    /* About section styled like hero background */
+    .about-section {
+      position: relative;
+      background:
+        radial-gradient(1200px 700px at 22% 28%, rgba(111, 125, 251, .24), rgba(0,0,0,0)),
+        radial-gradient(900px 600px at 84% 44%, rgba(72, 238, 214, .22), rgba(0,0,0,0)),
+        linear-gradient(180deg, #0a0f14 0%, #0e1620 55%, #0b1118 100%);
+      color:#ffffff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      padding: 3rem 0;
+    }
+    .about-section h3, .about-section p { color:#ffffff; }
+    .about-section p { color: rgba(255,255,255,.85); }
+
     /* About section styling */
-    .about-title { font-weight: 700; line-height: 1.08; font-size: clamp(2rem, 3.6vw + 1rem, 3.8rem); letter-spacing: -.3px; }
+    .about-title { font-weight: 700; line-height: 1.06; font-size: clamp(1.8rem, 2.6vw + .9rem, 3.2rem); letter-spacing: -.3px; }
     .about-title em { font-style: italic; font-weight: 600; }
 
     /* About as image block like hero */
@@ -93,9 +307,55 @@
     .reveal[data-delay="3"] { transition-delay: .24s; }
     .reveal[data-delay="4"] { transition-delay: .32s; }
 
+    /* Contact: attractive glass card on dark */
+    .contact { position: relative; }
+    .contact-card { position: relative; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 18px; padding: 1.25rem; box-shadow: 0 10px 32px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); overflow: hidden; }
+    .contact-card::before { content:""; position:absolute; inset:-40%; background: conic-gradient(from 0deg, rgba(72,238,214,.18), rgba(111,125,251,.18), rgba(72,238,214,.18)); filter: blur(30px); animation: spinSheen 12s linear infinite; opacity:.35; pointer-events: none; }
+    @keyframes spinSheen { to { transform: rotate(360deg); } }
+    .contact-card .form-label { color:#e9f7fa; opacity:.9; font-weight:600; }
+    .contact-card .form-control { background: #f7fbff; border:1.2px solid rgba(22,31,43,.18); color:#0b0f14; border-radius: 14px; padding:.85rem 1rem; caret-color:#0aa5b5; box-shadow: inset 0 1px 0 rgba(255,255,255,.6); transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease; cursor: text; }
+    .contact-card textarea.form-control { min-height: 140px; }
+    .contact-card .form-control::placeholder { color: #8a9bab; opacity: .9; }
+    .contact-card .form-control:hover { border-color: #9bcfe7; }
+    .contact-card .form-control:focus { border-color: #48eed6; box-shadow: 0 0 0 4px rgba(72,238,214,.25), inset 0 1px 0 rgba(255,255,255,.6); background:#ffffff; outline: none; }
+    .contact-card .form-control::selection { background: rgba(72,238,214,.28); color:#0b0f14; }
+    /* Chrome autofill */
+    .contact-card input.form-control:-webkit-autofill,
+    .contact-card input.form-control:-webkit-autofill:hover,
+    .contact-card input.form-control:-webkit-autofill:focus,
+    .contact-card textarea.form-control:-webkit-autofill {
+      -webkit-text-fill-color: #0b0f14;
+      -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+      box-shadow: 0 0 0px 1000px #ffffff inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    .contact .btn-brand { position: relative; border-radius: 999px; padding: .6rem 1rem; font-weight:700; box-shadow: 0 8px 22px rgba(72,238,214,.28); overflow: hidden; font-size: .98rem; line-height: 1.15; }
+    /* Override Bootstrap's .btn-lg inside contact */
+    .contact .btn-brand.btn-lg { padding: .6rem 1rem; font-size: .98rem; }
+    .contact .btn-brand::after { content:""; position:absolute; inset:-2px; border-radius:inherit; background: linear-gradient(120deg, rgba(255,255,255,.0) 30%, rgba(255,255,255,.45) 50%, rgba(255,255,255,0) 70%); transform: translateX(-120%); animation: btnShimmer 3.2s ease-in-out infinite; pointer-events: none; }
+    @keyframes btnShimmer { 0%{ transform: translateX(-120%);} 60%{ transform: translateX(120%);} 100%{ transform: translateX(120%);} }
+    .contact small { color: rgba(233,247,250,.78); }
+
+    /* Engine line gentle float */
+    .engine-line { animation: lineFloat 6s ease-in-out infinite; }
+    @keyframes lineFloat { 0%,100%{ transform: translate(-50%, 0);} 50%{ transform: translate(-50%, -8px);} }
+
+    /* Clients: show full-color logos */
+    .client-img { filter: none !important; opacity: 1 !important; transition: transform .2s ease; }
+    .client-card:hover .client-img { transform: translateY(-1px); }
+
+    /* Counter numbers readable on dark */
+    #counter .stat { color:#e9f7fa !important; text-shadow: 0 1px 10px rgba(0,0,0,.25); }
+
+    /* Services: subtle tilt on hover */
+    .service-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .service-card:hover { transform: translateY(-6px) rotateX(.6deg) rotateY(-.6deg); }
+
     /* Brand logo */
     .brand-logo { height: 36px; width: auto; display: block; }
     @media (min-width: 992px) { .brand-logo { height: 40px; } }
+    /* Slightly tighter max width to mirror reference */
+    @media (min-width: 1200px) { .container { max-width: 1180px; } }
   </style>
 </head>
 <body>
@@ -110,11 +370,11 @@
       </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Digital Hub</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Our Story</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Solutions</a></li>
         </ul>
-        <a href="#contact" class="btn btn-cta ms-lg-3">Work With Us</a>
+        <a href="#contact" class="btn btn-accent ms-lg-3">Work With Us</a>
       </div>
     </div>
   </nav>
@@ -124,14 +384,13 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1 class="hero-title mb-3">
-            Helping Businesses Turn<br>
-            Media Into <span class="highlight">Revenue</span>
+          <h1 class="hero-title banner-heading mb-3">
+            Your Real Estate Growth Partner<br>
+            <span class="d-block">Turning Listings Into <span id="rotWord" class="highlight type-caret">Profit</span></span>
           </h1>
-          <p class="hero-sub mt-2">We turn your media investments into measurable growth through full‑funnel performance strategy and execution.</p>
-          <div class="d-flex gap-3 mt-4">
-            <a href="#contact" class="btn btn-brand btn-lg">Request a Free Audit</a>
-            <a href="#services" class="btn btn-outline-light btn-lg">Explore Services</a>
+          <div class="hero-cta">
+            <p class="hero-sub mb-3">Done-for-you marketing solutions that transform your brand into profit and growth.</p>
+            <a href="#contact" class="btn btn-accent">Let’s Work Together</a>
           </div>
         </div>
       </div>
@@ -146,14 +405,61 @@
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
           <h3 class="fw-bold">About Us</h3>
-          <h2 class="about-title mb-3">Combining <em>visionary development</em> with a best‑in‑class real estate marketing agency.</h2>
-          <p class="text-secondary">We partner with leading property brands to shape demand across channels and convert it into measurable growth. Our team aligns media, creative, and landing experiences into a single performance system.</p>
+          <h2 class="about-title mb-3">Creativity, Strategy, Results — every ad, every lead, every deal, perfected</h2>
+          <p class="text-secondary">At Puzzle Diplomats, a digital marketing agency, we started with a bold idea — to blend strategy, creativity, and technology into meaningful digital growth. Over the past 10 years, we have evolved into a trusted digital marketing agency, partnering with 100+ brands across 40+ industries, launching 500+ custom websites, 50,000+ campaigns, and driving over 200,000 qualified leads.</p>
+          <p class="text-secondary">When it comes to real estate, we don’t just market — we dominate. From razor-sharp branding to high-converting performance campaigns, we turn clicks into leads and leads into sold-out projects. SEO, SEM, Social, Creatives, Strategy — we do it all, and we do it best.</p>
+          <p class="text-secondary">But beyond the numbers lies our real strength — storytelling with purpose, design with impact, and data-driven strategies that build brands people remember. In a world where digital noise is constant, we help your brand stand out, connect deeply, and grow smarter.</p>
+          <p class="text-secondary mb-3">We are not just marketers — we are your brand marketing partners, crafting the digital journeys that deliver results.</p>
+          <a href="pages/about.html" class="btn btn-accent">Know More</a>
         </div>
         <div class="col-lg-6">
           <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
             <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1600&auto=format&fit=crop" alt="Collaborative puzzle strategy">
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Real Estate Growth Engine -->
+  <section id="engine" class="section engine reveal" data-anim="zoom">
+    <div class="container position-relative">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold text-white">Your Real Estate Growth Engine</h2>
+      </div>
+      <div class="engine-line" aria-hidden="true"></div>
+
+      <div class="row g-5 align-items-center mb-4">
+        <div class="col-lg-6 order-lg-1 reveal" data-anim="left" data-delay="1">
+          <div class="engine-card">
+            <div class="engine-num">1</div>
+            <h5 class="mb-1">Strategy & Planning</h5>
+            <p class="mb-0">We analyze your target buyers, study the market, and design campaigns that highlight your properties and brand as the market leader.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-2 d-none d-lg-block"></div>
+      </div>
+
+      <div class="row g-5 align-items-center mb-4">
+        <div class="col-lg-6 order-lg-1 d-none d-lg-block"></div>
+        <div class="col-lg-6 order-lg-2 reveal" data-anim="right" data-delay="1">
+          <div class="engine-card">
+            <div class="engine-num">2</div>
+            <h5 class="mb-1">Content & Creatives</h5>
+            <p class="mb-0">From property videos to social posts, landing pages, and email campaigns — we craft content that showcases your listings and expertise beautifully.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6 order-lg-1 reveal" data-anim="left" data-delay="1">
+          <div class="engine-card">
+            <div class="engine-num">3</div>
+            <h5 class="mb-1">Promotion & Conversion</h5>
+            <p class="mb-0">We run targeted ads, SEO, and social campaigns to generate high-quality leads, book property visits, and convert interest into sales.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-2 d-none d-lg-block"></div>
       </div>
     </div>
   </section>
@@ -166,51 +472,163 @@
           <h2 class="fw-bold">Full‑Funnel Real Estate Marketing</h2>
           <p class="text-secondary">From discovery to conversion, we integrate paid, organic, and CRO for consistent pipeline growth.</p>
         </div>
-        <div class="col-md-4 text-md-end"><a href="#contact" class="btn btn-outline-secondary">Get a proposal</a></div>
+        <div class="col-md-4 text-md-end"><a href="#contact" class="btn btn-accent">Get a proposal</a></div>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-4 reveal" data-delay="1">
-          <div class="card card-hover h-100">
-            <div class="card-body">
-              <div class="feature-icon mb-3"><i class="bi bi-rocket"></i></div>
-              <h5 class="card-title">Paid Media (PPC)</h5>
-              <p class="card-text text-secondary">Google, Meta, and YouTube campaigns engineered for qualified booking inquiries and project launches.</p>
-              <ul class="text-secondary small mb-3">
-                <li>High-intent keyword clusters</li>
-                <li>Lead form + WhatsApp conversion</li>
-                <li>Launch calendars & budgets</li>
+        <div class="col-md-6 col-lg-4 reveal" data-anim="left" data-delay="1">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-badge-ad"></i></div>
+              <h5 class="fw-bold mb-2">Brand Strategy & Identity</h5>
+              <p class="text-secondary">We craft compelling narratives and visual systems that make your brand memorable and trusted with buyers and investors.</p>
+              <ul class="list small mb-3">
+                <li>Positioning & messaging</li>
+                <li>Logo & visual language</li>
+                <li>Brand guidelines</li>
               </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal" data-anim="zoom" data-delay="2">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-window"></i></div>
+              <h5 class="fw-bold mb-2">Website Design & Development</h5>
+              <p class="text-secondary">Responsive, SEO‑friendly websites that showcase properties beautifully and convert visitors into inquiries.</p>
+              <ul class="list small mb-3">
+                <li>Listings + lead capture</li>
+                <li>Seamless navigation & UX</li>
+                <li>Optimized performance</li>
+              </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal" data-anim="right" data-delay="3">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-graph-up"></i></div>
+              <h5 class="fw-bold mb-2">Search Engine Optimization (SEO)</h5>
+              <p class="text-secondary">On‑page, off‑page, and local SEO to dominate property‑related searches and attract serious buyers.</p>
+              <ul class="list small mb-3">
+                <li>On‑page & technical SEO</li>
+                <li>Local & multilingual SEO</li>
+                <li>Content & link strategy</li>
+              </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal" data-delay="1">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-instagram"></i></div>
+              <h5 class="fw-bold mb-2">Social Media Marketing</h5>
+              <p class="text-secondary">Engaging content and ads across Instagram, Facebook, LinkedIn and more to build awareness and drive inquiries.</p>
+              <ul class="list small mb-3">
+                <li>Creative + ad campaigns</li>
+                <li>Audience growth & engagement</li>
+                <li>Community management</li>
+              </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 reveal" data-delay="2">
-          <div class="card card-hover h-100">
-            <div class="card-body">
-              <div class="feature-icon mb-3"><i class="bi bi-graph-up"></i></div>
-              <h5 class="card-title">SEO for Property</h5>
-              <p class="card-text text-secondary">Local SEO, project pages, community hubs, and multilingual content to dominate discovery.</p>
-              <ul class="text-secondary small mb-3">
-                <li>Technical & schema for listings</li>
-                <li>City/Community pages</li>
-                <li>Lead magnets & guides</li>
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-bullseye"></i></div>
+              <h5 class="fw-bold mb-2">Pay‑Per‑Click (PPC) Advertising</h5>
+              <p class="text-secondary">Targeted Google and social campaigns that deliver immediate leads and booked visits.</p>
+              <ul class="list small mb-3">
+                <li>Audience & intent targeting</li>
+                <li>High‑converting funnels</li>
+                <li>Daily pacing & optimizations</li>
               </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 reveal" data-delay="3">
-          <div class="card card-hover h-100">
-            <div class="card-body">
-              <div class="feature-icon mb-3"><i class="bi bi-phone"></i></div>
-              <h5 class="card-title">CRO Landing Pages</h5>
-              <p class="card-text text-secondary">Fast, mobile‑first pages with forms, CTAs, and trust signals to maximize conversion rates.</p>
-              <ul class="text-secondary small mb-3">
-                <li>Heatmaps & A/B testing</li>
-                <li>Proof & social validation</li>
-                <li>WhatsApp + call tracking</li>
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-envelope"></i></div>
+              <h5 class="fw-bold mb-2">Email Marketing</h5>
+              <p class="text-secondary">Personalized and automated sequences that nurture leads with property updates and insights.</p>
+              <ul class="list small mb-3">
+                <li>Lifecycle automations</li>
+                <li>Newsletters & updates</li>
+                <li>CRM integrations</li>
               </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
             </div>
           </div>
         </div>
+
+        <div class="col-md-6 col-lg-4 reveal" data-delay="1">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-file-earmark-text"></i></div>
+              <h5 class="fw-bold mb-2">Content Marketing</h5>
+              <p class="text-secondary">Blogs, videos, and visuals that demonstrate expertise and highlight listings to build trust.</p>
+              <ul class="list small mb-3">
+                <li>Editorial strategy</li>
+                <li>Video & creative production</li>
+                <li>Distribution & repurposing</li>
+              </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal" data-delay="2">
+          <div class="service-card tilt">
+            <div class="p-4">
+              <div class="service-icon mb-3"><i class="bi bi-stars"></i></div>
+              <h5 class="fw-bold mb-2">Online Reputation Management</h5>
+              <p class="text-secondary">Monitor and enhance your presence with positive reviews and professional feedback handling.</p>
+              <ul class="list small mb-3">
+                <li>Review generation</li>
+                <li>Listings & profile hygiene</li>
+                <li>Sentiment tracking</li>
+              </ul>
+              <a href="#contact" class="btn btn-accent btn-sm">Get proposal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Clients -->
+  <section class="clients section">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <h3 class="section-title mb-0">Our Clients</h3>
+        <small class="text-muted">Trusted by leading real estate brands</small>
+      </div>
+      <div class="client-grid">
+        <div class="client-card"><img class="client-img" src="logofive.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logofour.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logonine.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logoone.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logosix.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logoten.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logothree.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logotwo.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="golden.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="Logo.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logoeleven.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logofourteen.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logofifteen.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logosixteen.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logoseven.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="logothirteen.jpg" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="world.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="worldone.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="worldthree.png" alt="Client"></div>
+        <div class="client-card"><img class="client-img" src="worldfour.png" alt="Client"></div>
       </div>
     </div>
   </section>
@@ -220,75 +638,55 @@
     <div class="container">
       <div class="row text-center g-4">
         <div class="col-6 col-lg-3 reveal" data-delay="1">
-          <div class="stat text-brand" data-countup="" data-target="48">0%</div>
-          <div class="text-secondary">Avg. CPL Reduction</div>
+          <div class="stat text-brand" data-countup="" data-target="10">0</div>
+          <div class="text-secondary">10+ Years of Real Estate Marketing Excellence</div>
         </div>
         <div class="col-6 col-lg-3 reveal" data-delay="2">
-          <div class="stat text-brand" data-countup="" data-target="22000">0</div>
-          <div class="text-secondary">Leads Driven</div>
+          <div class="stat text-brand" data-countup="" data-target="500">0</div>
+          <div class="text-secondary">500+ Property Websites & Campaigns Delivered</div>
         </div>
         <div class="col-6 col-lg-3 reveal" data-delay="3">
-          <div class="stat text-brand" data-countup="" data-target="97">0%</div>
-          <div class="text-secondary">Tracking Accuracy</div>
+          <div class="stat text-brand" data-countup="" data-target="100">0</div>
+          <div class="text-secondary">100+ Real Estate Brands Scaled Across Cities</div>
         </div>
         <div class="col-6 col-lg-3 reveal" data-delay="4">
-          <div class="stat text-brand" data-countup="" data-target="12">0+</div>
-          <div class="text-secondary">Communities Covered</div>
+          <div class="stat text-brand" data-countup="" data-target="10000">0</div>
+          <div class="text-secondary">10,000+ Qualified Property Leads Generated Every Month</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why this matters -->
-  <section class="section reveal">
+  <!-- Why this matters (simplified like screenshot) -->
+  <section class="section reveal why">
     <div class="container">
+      <span class="why-blob" aria-hidden="true"></span>
       <div class="row g-4 align-items-center">
         <div class="col-lg-6 reveal" data-delay="1">
-          <h2 class="fw-bold">Why this matters</h2>
-          <p class="text-secondary">Your buyers move fast. We align channels, pages, and tracking to turn demand into booked viewings.</p>
-          <div class="d-grid gap-3">
-            <div class="d-flex gap-3">
-              <div class="feature-icon"><i class="bi bi-bullseye"></i></div>
-              <div>
-                <h6 class="mb-1">Quality over volume</h6>
-                <p class="mb-0 text-secondary">High‑intent audiences and messaging tuned for qualified inquiries, not just clicks.</p>
-              </div>
-            </div>
-            <div class="d-flex gap-3">
-              <div class="feature-icon"><i class="bi bi-lightning"></i></div>
-              <div>
-                <h6 class="mb-1">Speed to market</h6>
-                <p class="mb-0 text-secondary">Launch fast with tight feedback loops, creative iteration, and daily pacing control.</p>
-              </div>
-            </div>
-            <div class="d-flex gap-3">
-              <div class="feature-icon"><i class="bi bi-bar-chart"></i></div>
-              <div>
-                <h6 class="mb-1">Transparent outcomes</h6>
-                <p class="mb-0 text-secondary">Appointment rates, CPL, and ROAS drive decisions you can see on shared dashboards.</p>
-              </div>
-            </div>
-          </div>
+          <h2 class="fw-bold">Why This Matters?</h2>
+          <p class="text-secondary mb-4">Your ideal customers spend months researching before they buy. We help you build your media platform to:</p>
         </div>
-        <div class="col-lg-6 reveal" data-anim="right" data-delay="2">
-          <div class="p-4 bg-light rounded-4 h-100">
-            <div class="row text-center g-4">
-              <div class="col-6">
-                <div class="stat text-brand">48%</div>
-                <div class="text-secondary small">Avg. CPL Reduction</div>
-              </div>
-              <div class="col-6">
-                <div class="stat text-brand">22k+</div>
-                <div class="text-secondary small">Leads Driven</div>
-              </div>
-              <div class="col-6">
-                <div class="stat text-brand">97%</div>
-                <div class="text-secondary small">Tracking Accuracy</div>
-              </div>
-              <div class="col-6">
-                <div class="stat text-brand">12+</div>
-                <div class="text-secondary small">Communities Covered</div>
-              </div>
+        <div class="col-lg-6">
+          <div class="sheet-stack" id="whySheets">
+            <div class="sheet layer-3" data-title="Scale Faster with Smart Marketing" data-desc="Automate lead generation, track performance, and turn marketing data into decisions that deliver consistent growth.">
+              <div class="icon"><i class="bi bi-speedometer2"></i></div>
+              <h5 class="mb-1">Scale Faster with Smart Marketing</h5>
+              <p class="text-secondary mb-0">Automate lead generation, track performance, and turn marketing data into decisions that deliver consistent growth.</p>
+            </div>
+            <div class="sheet layer-2" data-title="Generate Quality Leads" data-desc="Target the right audience through performance‑driven campaigns that convert interest into property visits, site enquiries, and sales.">
+              <div class="icon"><i class="bi bi-bullseye"></i></div>
+              <h5 class="mb-1">Generate Quality Leads</h5>
+              <p class="text-secondary mb-0">Target the right audience through performance‑driven campaigns that convert interest into property visits, site enquiries, and sales.</p>
+            </div>
+            <div class="sheet layer-1 active" data-title="Build Your Brand Authority" data-desc="Position your real estate business as a trusted name. Showcase your projects, insights, and success stories to attract serious buyers and investors.">
+              <div class="icon"><i class="bi bi-award"></i></div>
+              <h5 class="mb-1">Build Your Brand Authority</h5>
+              <p class="text-secondary mb-0">Position your real estate business as a trusted name. Showcase your projects, insights, and success stories to attract serious buyers and investors.</p>
+            </div>
+            <div class="sheet-dots" aria-hidden="true">
+              <span class="dot" data-i="0"></span>
+              <span class="dot" data-i="1"></span>
+              <span class="dot" data-i="2"></span>
             </div>
           </div>
         </div>
@@ -302,7 +700,7 @@
       <h2 class="fw-bold text-center mb-4">What clients say</h2>
       <div class="row g-4">
         <div class="col-md-4 reveal" data-delay="1">
-          <div class="card h-100 card-hover">
+          <div class="glass-card tilt h-100 p-4">
             <div class="card-body">
               <p class="mb-3">“Our launches hit targets within weeks. The team acts like an in‑house squad with excellent reporting.”</p>
               <div class="small text-secondary">Marketing Lead, Dubai Developer</div>
@@ -310,7 +708,7 @@
           </div>
         </div>
         <div class="col-md-4 reveal" data-delay="2">
-          <div class="card h-100 card-hover">
+          <div class="glass-card tilt h-100 p-4">
             <div class="card-body">
               <p class="mb-3">“Lead quality improved and our CPL dropped 40% while bookings went up. Highly recommended.”</p>
               <div class="small text-secondary">Brokerage Director, Marina</div>
@@ -318,7 +716,7 @@
           </div>
         </div>
         <div class="col-md-4 reveal" data-delay="3">
-          <div class="card h-100 card-hover">
+          <div class="glass-card tilt h-100 p-4">
             <div class="card-body">
               <p class="mb-3">“They understand property buyers and how to convert them across channels and pages.”</p>
               <div class="small text-secondary">Community Manager, Downtown</div>
@@ -409,7 +807,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="section bg-light reveal">
+  <section id="contact" class="section reveal contact">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-5 reveal" data-delay="1">
@@ -422,7 +820,7 @@
           </ul>
         </div>
         <div class="col-lg-7 reveal" data-delay="2">
-          <form class="p-4 bg-white rounded-4 shadow-sm needs-validation" novalidate>
+          <form class="contact-card needs-validation" novalidate>
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Name</label>
@@ -547,22 +945,70 @@
     // Reveal on scroll animation
     (function(){
       const nodes = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window) || nodes.length === 0) {
-        nodes.forEach(n => n.classList.add('in-view'));
-        return;
+      if (!('IntersectionObserver' in window)) { nodes.forEach(n=>n.classList.add('in-view')); return; }
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+      }, { threshold: 0.2 });
+      nodes.forEach(n => io.observe(n));
+    })();
+
+    // Why sheets: click to advance like screenshot
+    (function(){
+      const stack = document.getElementById('whySheets');
+      if (!stack) return;
+      const sheets = Array.from(stack.querySelectorAll('.sheet'));
+      const dots = Array.from(stack.querySelectorAll('.sheet-dots .dot'));
+      let idx = 2; // active (top) is layer-1 last in DOM
+      function render(){
+        sheets.forEach(s=>s.classList.remove('active','layer-1','layer-2','layer-3'));
+        // order: idx is active, idx-1 is middle, idx-2 is back (wrap around)
+        const a = sheets[idx % sheets.length];
+        const m = sheets[(idx - 1 + sheets.length) % sheets.length];
+        const b = sheets[(idx - 2 + sheets.length) % sheets.length];
+        a.classList.add('active','layer-1');
+        m.classList.add('layer-2');
+        b.classList.add('layer-3');
+        dots.forEach((d,i)=> d.classList.toggle('active', i === idx % sheets.length));
       }
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            io.unobserve(entry.target);
+      function next(){ idx = (idx + 1) % sheets.length; render(); }
+      function prev(){ idx = (idx - 1 + sheets.length) % sheets.length; render(); }
+      // advance on click/tap anywhere on the stack
+      stack.addEventListener('click', (e)=>{ next(); });
+      // dots direct nav
+      dots.forEach((d,i)=> d.addEventListener('click', (ev)=>{ ev.stopPropagation(); idx = i; render(); }));
+      render();
+    })();
+  </script>
+  <script>
+    // Hero typing animation for the highlighted word
+    (function(){
+      const el = document.getElementById('rotWord');
+      if (!el) return;
+      const words = ['Profit', 'Revenue', 'Results'];
+      let wi = 0, ci = 0, typing = true;
+      const typeSpeed = 90;    // ms per char
+      const eraseSpeed = 60;   // ms per char when deleting
+      const stayDelay = 900;   // pause after a word is completed
+      const nextDelay = 300;   // pause before typing next word after deletion
+      const tick = () => {
+        const word = words[wi];
+        if (typing) {
+          el.textContent = word.slice(0, ci + 1);
+          ci++;
+          if (ci === word.length) { typing = false; return setTimeout(tick, stayDelay); }
+          return setTimeout(tick, typeSpeed);
+        } else {
+          el.textContent = word.slice(0, Math.max(0, ci - 1));
+          ci--;
+          if (ci === 0) {
+            wi = (wi + 1) % words.length;
+            typing = true;
+            return setTimeout(tick, nextDelay);
           }
-        });
-      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
-      nodes.forEach((n, i) => {
-        if (!n.hasAttribute('data-delay')) n.setAttribute('data-delay', String(Math.min(3, (i % 4))));
-        io.observe(n);
-      });
+          return setTimeout(tick, eraseSpeed);
+        }
+      };
+      setTimeout(tick, 400);
     })();
   </script>
   <!-- Bootstrap Icons -->
